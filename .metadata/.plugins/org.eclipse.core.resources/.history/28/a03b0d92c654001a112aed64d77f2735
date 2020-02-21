@@ -1,0 +1,213 @@
+package abraham_problem1;
+import java.security.SecureRandom;
+import java.util.Scanner;
+
+public class CAI5 {
+	public static void main(String[] args) {
+quiz();	
+	}
+		public static void quiz(){
+			int q=1,i,difflevel,testtype=0;
+			double a=0;	
+			difflevel=readDifficulty();
+			testtype=readType();
+			for(i=0;i<10;i++) {
+				double answer=askQuestion(difflevel,testtype);
+			a=a+isAnswerCorrect(answer);
+			}
+			displayCompletionMessage(a);
+		programRerun();
+		}
+	public static double askQuestion(int x,int y){
+		int num1,num2,i;
+		double answer=0;
+		SecureRandom random=new SecureRandom();
+		//Set up a switch statement here with the various levels
+		switch(x) {
+		case 1:
+			num1=random.nextInt(9);
+			num2=random.nextInt(9);
+			answer=testtyper(y,num1,num2);
+			break;
+		case 2:
+			num1=random.nextInt(99);
+			num2=random.nextInt(99);
+			answer=testtyper(y,num1,num2);
+			break;
+		case 3:
+			num1=random.nextInt(999);
+			num2=random.nextInt(999);
+			answer=testtyper(y,num1,num2);
+			break;
+		case 4:
+			num1=random.nextInt(9999);
+			num2=random.nextInt(9999);
+			answer=testtyper(y,num1,num2);
+			break;
+		default:
+			break;
+		}
+		return answer;
+	}
+	public static int readResponse() {
+		Scanner input=new Scanner(System.in);
+		int response=input.nextInt();
+		System.out.println(response);
+		return response;
+	}
+	public static int isAnswerCorrect(double x) {
+		int i,a=0,b=0;
+		int response=readResponse();
+		if(response==x) {
+			displayCorrectResponse();
+			return 1;
+		}else {
+			b++;
+			displayIncorrectResponse();
+			return 0;
+		}
+	}
+	public static void displayCorrectResponse() {
+		SecureRandom outcome1=new SecureRandom();
+		int choice1=1+outcome1.nextInt(3);
+		switch(choice1) {
+		case 1:
+			System.out.println("Very good!");
+			break;
+		case 2:
+			System.out.println("Excellent!");
+			break;
+		case 3:
+			System.out.println("Nice Work!");
+			break;
+		case 4:
+			System.out.println("Keep up the good work");
+			break;
+		}
+	}
+	public static void displayIncorrectResponse() {
+		SecureRandom outcome2=new SecureRandom();
+		int choice2=1+outcome2.nextInt(3);
+		switch(choice2) {
+		case 1:
+			System.out.println("No. Please try again.");
+			break;
+		case 2:
+			System.out.println("Wrong. Try once more.");
+			break;
+		case 3:
+			System.out.println("Don't give up");
+			break;
+		case 4:
+			System.out.println("No. Keep trying");
+			break;
+		}
+	}
+	public static int readDifficulty() {
+		int a = 0,i;
+		System.out.println("Please enter the difficulty level you are looking for.");
+		Scanner reader=new Scanner(System.in);
+		for(i=0;i<100;i++){
+		a=reader.nextInt();
+		if(a>=1 && a<=4) {
+		break;
+		}else{
+			System.out.println("That is an invalid difficulty level.\nPlease enter a valid difficulty level.");
+			continue;
+		}
+		}
+		return a;
+	}
+	public static void displayCompletionMessage(double a) {
+		double score;
+		System.out.println("Thank you here is your score: ");
+		score=(a/10)*100;
+		System.out.println(score+"%");//Calculates percent score
+		if(score>=75) {
+			System.out.println("Congratulations, you are ready to go to the next level.");
+		}else {
+			System.out.println("Please ask your teacher for help");
+		}
+	}
+	public static void programRerun() {
+		int z=0;
+		Scanner bruh=new Scanner(System.in);
+		System.out.println("Would you like to take another test?\n Enter 1 to retake and enter 2 if you don't want to.");
+	while(z<100) {
+		z=bruh.nextInt();
+		switch(z){
+	case 1:
+		quiz();
+	case 2:
+		System.out.println("Thank you, goodbye!");
+		break;
+		default:
+			System.out.println("Thank you, goodbye");
+		break;
+	}
+		break;
+	}
+	
+}
+public static int readType() {
+	int a = 0,i;
+	System.out.println("Please enter the type of test you are looking for.\nHere are your options:\n1.Addition Problems Only\n2.Multiplication Problems Only\n3.Subtraction Problems Only\n4.Division Problems Only\n5.Mix of them all.\n");
+	Scanner reader=new Scanner(System.in);
+	for(i=0;i<100;i++){
+	a=reader.nextInt();
+	if(a>=1 && a<=5) {
+	break;
+	}else{
+		System.out.println("That is an invalid test type.\nPlease enter a valid test type.");
+		continue;
+	}
+	}
+	return a;
+}
+public static double testtyper(int x,int y,int z) {
+	int a=0,o;
+	if(x<5 &&x>=1) {
+	switch(x) {
+	case 1:
+		a=y+z;
+		System.out.println("What is the sum of "+y+" and "+z+"?\n");
+		break;
+	case 2:
+		a=y*z;
+		System.out.println("What is the product of "+y+" and "+z+"?\n");
+		break;
+	case 3:
+		a=y-z;
+		System.out.println("What is the difference of "+y+" and "+z+"?\n");
+		break;
+	case 4:
+		a=y/z;
+		System.out.println("What is the quotient of "+y+" and "+z+"?\n");
+		break;
+	}
+	}else if(x==5) {
+		SecureRandom random=new SecureRandom();
+		o=1+random.nextInt(3);
+		switch(o) {
+		case 1:
+			a=y+z;
+			System.out.println("What is the sum of "+y+" and "+z+"?\n");
+			break;
+		case 2:
+			a=y*z;
+			System.out.println("What is the product of "+y+" and "+z+"?\n");
+			break;
+		case 3:
+			a=y-z;
+			System.out.println("What is the difference of "+y+" and "+z+"?\n");
+			break;
+		case 4:
+			a=y/z;
+			System.out.println("What is the quotient of "+y+" and "+z+"?\n");
+			break;
+		}
+		
+	}
+	return a;
+}
+}

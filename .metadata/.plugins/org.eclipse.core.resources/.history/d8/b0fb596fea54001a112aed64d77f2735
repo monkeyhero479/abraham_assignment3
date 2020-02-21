@@ -1,0 +1,18 @@
+package savingspackagr;
+
+public class SavingsAccountTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+ SavingsAccount saver1=new SavingsAccount(2000.0);
+ SavingsAccount saver2=new SavingsAccount(3000.0);
+ int b,i;
+ SavingsAccount.modifyInterestRate(4);//Enter this as a percentage number e.g 4 percent or 3.5 as oppposed to .04 or .035
+ System.out.println("Here is the balance sheet for Saver 1\n");
+ for(i=0;i<=12;i++) {
+	 saver1.calculateMonthlyInterest();
+	 System.out.println("Month"+i+String.format("%2f",saver1.getSavingBalance()));
+ }
+	}
+
+}

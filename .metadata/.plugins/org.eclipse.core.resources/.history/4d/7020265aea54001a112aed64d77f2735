@@ -1,0 +1,32 @@
+package savingspackagr;
+
+public class SavingsAccount {
+private static double annualInterestRate=.04;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    double savingsBalance=1;
+   ensemble(savingsBalance);
+    
+    
+	}
+
+	public static double modifyInterestRate(double x) {
+		double additional=calculateMonthlyInterest(x);
+				x=x+additional;//This method adds the interest value to the savings balance.
+				return x;
+	}
+	public static double calculateMonthlyInterest(double x) {
+		x=(x*annualInterestRate)/12;//This method calculates the interest value
+		return x;
+	}
+	public static void ensemble(double x) {
+		
+		System.out.println(modifyInterestRate(x));
+	}
+	
+	
+	
+	
+	
+	
+}

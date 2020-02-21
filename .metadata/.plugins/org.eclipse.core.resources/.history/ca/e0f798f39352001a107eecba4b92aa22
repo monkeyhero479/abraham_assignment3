@@ -1,0 +1,151 @@
+package abraham_problem1;
+
+import java.security.SecureRandom;
+import java.util.Scanner;
+
+public class CAI4 {
+
+	public static void main(String[] args) {
+quiz();
+		
+	}
+		public static void quiz(){
+			int q=1,i,difflevel;
+			double a=0,score;
+			difflevel=readDifficulty();
+	
+			for(i=0;i<10;i++) {
+				int answer=askQuestion(difflevel);
+			a=a+isAnswerCorrect(answer);
+			
+			}
+			System.out.println("Thank you here is your score: ");
+			score=(a/10)*100;
+			System.out.println(score+"%");//Calculates percent score
+			if(score>=75) {
+				System.out.println("Congratulations, you are ready to go to the next level.");
+			}else {
+				System.out.println("Please ask your teacher for help");
+			}
+		
+		}
+			
+	public static int askQuestion(int x){
+		int num1,num2,i,answer=0;
+		SecureRandom random=new SecureRandom();
+		//Set up a switch statement here with the various levels
+		switch(x) {
+		case 1:
+			num1=random.nextInt(9);
+			num2=random.nextInt(9);
+			answer=num1*num2;
+			System.out.println("What is the product of "+num1+" and "+num2+"?\n");
+			break;
+		case 2:
+			num1=random.nextInt(99);
+			num2=random.nextInt(99);
+			answer=num1*num2;
+			System.out.println("What is the product of "+num1+" and "+num2+"?\n");
+			break;
+		case 3:
+			num1=random.nextInt(999);
+			num2=random.nextInt(999);
+			answer=num1*num2;
+			System.out.println("What is the product of "+num1+" and "+num2+"?\n");
+			break;
+		case 4:
+			num1=random.nextInt(9999);
+			num2=random.nextInt(9999);
+			answer=num1*num2;
+			System.out.println("What is the product of "+num1+" and "+num2+"?\n");
+			break;
+		}
+		
+		return answer;
+		
+	}
+	public static int readResponse() {
+		Scanner input=new Scanner(System.in);
+		int response=input.nextInt();
+		System.out.println(response);
+		return response;
+	}
+	public static int isAnswerCorrect(int x) {
+		int i,a=0,b=0;
+		int response=readResponse();
+		if(response==x) {
+			
+			displayCorrectResponse();
+			return 1;
+		}else {
+			b++;
+			displayIncorrectResponse();
+			return 0;
+			
+		}
+		
+		
+	}
+	public static void displayCorrectResponse() {
+		SecureRandom outcome1=new SecureRandom();
+		int choice1=1+outcome1.nextInt(3);
+		
+		switch(choice1) {
+		case 1:
+			System.out.println("Very good!");
+			break;
+		case 2:
+			System.out.println("Excellent!");
+			break;
+		case 3:
+			System.out.println("Nice Work!");
+			break;
+		case 4:
+			System.out.println("Keep up the good work");
+			break;
+		}
+	}
+	public static void displayIncorrectResponse() {
+		SecureRandom outcome2=new SecureRandom();
+		int choice2=1+outcome2.nextInt(3);
+		switch(choice2) {
+		case 1:
+			System.out.println("No. Please try again.");
+			break;
+		case 2:
+			System.out.println("Wrong. Try once more.");
+			break;
+		case 3:
+			System.out.println("Don't give up");
+			break;
+		case 4:
+			System.out.println("No. Keep trying");
+			break;
+		}
+	}
+	public static int readDifficulty() {
+		int a = 0,i;
+		Scanner reader=new Scanner(System.in);
+		for(i=0;i<100;i++){
+		a=reader.nextInt();
+		if(a>=1 && a<=4) {
+		break;
+		}else{
+			continue;
+		}
+		}
+		return a;
+	}
+	public static void displayCompletionMessage() {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

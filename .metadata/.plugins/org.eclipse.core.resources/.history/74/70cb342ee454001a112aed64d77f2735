@@ -1,0 +1,11 @@
+package savingspackagr;
+
+public class SavingsAccountTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+ SavingsAccount saver1=new SavingsAccount();
+ saver1.ensemble(x);
+	}
+
+}
